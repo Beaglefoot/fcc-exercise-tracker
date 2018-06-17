@@ -24,20 +24,23 @@ app.get('/', (_, res) => {
   });
 });
 
-app.post('/users', (req, res, next) => {
+app.post('/users', async (req, res, next) => {
   const { name } = req.body;
-  const user = new User({ name });
+  const user = await User.findOne({ name });
 
-  user
-    .save()
-    .then(({ name, _id }) => {
-      console.log(`Created ${name} with _id ${_id}`);
-      res.send({ name, _id });
-    })
-    .catch(err => {
-      res.status(400).send({ error: err.message });
-      next(err);
-    });
+  if (user) {
+    res.status(409).send({ error: `User with name "${name}" already exists` });
+    return;
+  }
+
+  try {
+    const { _id } = await new User({ name }).save();
+    console.log(`Created ${name} with _id ${_id}`);
+    res.send({ name, _id });
+  } catch (err) {
+    res.status(400).send({ error: err.message });
+    next(err);
+  }
 });
 
 export default app;
