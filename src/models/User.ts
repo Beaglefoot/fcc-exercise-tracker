@@ -1,5 +1,10 @@
-import { Schema, model } from 'mongoose';
-import { ExerciseSchema } from './Exercise';
+import { Schema, model, Document } from 'mongoose';
+import { ExerciseSchema, IExercise } from './Exercise';
+
+export interface IUser extends Document {
+  name: string;
+  exercises: IExercise[];
+}
 
 const UserSchema = new Schema({
   name: {
@@ -13,6 +18,6 @@ UserSchema.virtual('totalCount').get(function() {
   return this.exercises.length;
 });
 
-const User = model('user', UserSchema);
+const User = model<IUser>('user', UserSchema);
 
 export default User;

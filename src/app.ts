@@ -24,16 +24,20 @@ app.get('/', (_, res) => {
   });
 });
 
-app.post('/users', (req, res) => {
+app.post('/users', (req, res, next) => {
   const { name } = req.body;
   const user = new User({ name });
 
   user
     .save()
-    .then(user => console.log(`${user} was saved to DB`))
-    .catch(err => console.error(`Failed to save user into DB`));
-
-  res.send();
+    .then(({ name, _id }) => {
+      console.log(`Created ${name} with _id ${_id}`);
+      res.send({ name, _id });
+    })
+    .catch(err => {
+      res.status(400).send({ error: err.message });
+      next(err);
+    });
 });
 
 export default app;
