@@ -1,6 +1,7 @@
 import { Handler } from 'express';
-import User from '../models/User';
-import { ExerciseSchema } from '../models/Exercise';
+import mongoose from 'mongoose';
+import User, { IUser } from '../models/User';
+import { ExerciseSchema, IExercise } from '../models/Exercise';
 
 export const createUser: Handler = async (req, res, next) => {
   const { name } = req.body;
@@ -24,37 +25,34 @@ export const createUser: Handler = async (req, res, next) => {
 export const addExercise: Handler = async (req, res, next) => {
   const { userId } = req.params;
   const { ...exercise } = req.body;
-  const user = await User.findById(userId);
+  let user: IUser;
 
-  if (!user) {
-    res
-      .status(400)
-      .send({ error: `User with provided userId ${userId} does not exist.` });
+  try {
+    user = await User.findByIdAndUpdate(userId, {
+      $push: { exercises: exercise }
+    }).exec();
+  } catch (err) {
+    res.status(400).send({ error: `Cannot get user by userId ${userId}.` });
+    next(err);
     return;
   }
 
-  try {
-    user.exercises.push(exercise);
-    const { _id: userId, name: username, exercises } = await user.save();
-    const addedExercise = exercises.slice(-1)[0];
-    const { _id: exerciseId, description, duration, date } = addedExercise;
+  const { name: username, exercises } = user;
 
-    console.log(
-      `Added new exercise for userId ${userId}: ${JSON.stringify(
-        addedExercise
-      )}.`
-    );
+  // Just a convoluted way to deal with own properties while assembling an object for response
+  const addedExercise = exercises.slice(-1)[0];
+  const { _id: exerciseId, description, duration, date } = addedExercise;
 
-    res.send({
-      username,
-      userId,
-      exerciseId,
-      description,
-      duration,
-      date
-    });
-  } catch (err) {
-    res.status(400).send({ error: err.message });
-    next(err);
-  }
+  console.log(
+    `Added new exercise for userId ${userId}: ${JSON.stringify(addedExercise)}.`
+  );
+
+  res.send({
+    username,
+    userId,
+    exerciseId,
+    description,
+    duration,
+    date
+  });
 };
