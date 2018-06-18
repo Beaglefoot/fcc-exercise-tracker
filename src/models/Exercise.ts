@@ -1,6 +1,7 @@
 import { Schema } from 'mongoose';
 
 export interface IExercise extends Document {
+  _id?: string;
   description: string;
   duration: number;
   date: string;
