@@ -3,7 +3,6 @@ import express from 'express';
 import mongoose from 'mongoose';
 import logger from './middleware/logger';
 import usersRouter from './routes/usersRoutes';
-import User from './models/User';
 
 const { MONGO_URI } = JSON.parse(fs.readFileSync('./.env', 'utf8'));
 

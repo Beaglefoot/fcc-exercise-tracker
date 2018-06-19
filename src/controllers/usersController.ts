@@ -1,7 +1,5 @@
 import { Handler } from 'express';
-import mongoose from 'mongoose';
 import User, { IUser } from '../models/User';
-import { ExerciseSchema, IExercise } from '../models/Exercise';
 
 export const createUser: Handler = async (req, res, next) => {
   const { name } = req.body;
