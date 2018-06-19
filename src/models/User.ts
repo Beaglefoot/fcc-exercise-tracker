@@ -4,6 +4,7 @@ import { ExerciseSchema, IExercise } from './Exercise';
 export interface IUser extends Document {
   name: string;
   exercises: IExercise[];
+  totalCount: number;
 }
 
 const UserSchema = new Schema({
