@@ -29,6 +29,8 @@
     "typescript": "^2.9.2"
   },
   "dependencies": {
+    "@types/date-fns": "^2.6.0",
+    "date-fns": "^1.29.0",
     "ejs": "^2.5.9",
     "express": "^4.16.3",
     "lodash": "^4.17.5",

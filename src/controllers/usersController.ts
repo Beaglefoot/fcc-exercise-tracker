@@ -26,11 +26,15 @@ export const addExercise: Handler = async (req, res, next) => {
   let user: IUser;
 
   try {
-    user = await User.findByIdAndUpdate(userId, {
-      $push: { exercises: exercise }
-    }).exec();
+    user = await User.findByIdAndUpdate(
+      userId,
+      {
+        $push: { exercises: exercise }
+      },
+      { runValidators: true }
+    ).exec();
   } catch (err) {
-    res.status(400).send({ error: `Cannot get user by userId ${userId}.` });
+    res.status(400).send({ error: err.message });
     next(err);
     return;
   }

@@ -10,7 +10,8 @@ export interface IUser extends Document {
 const UserSchema = new Schema({
   name: {
     type: String,
-    required: [true, 'Username is required.']
+    required: [true, 'Username is required.'],
+    minlength: [3, 'Username should be at least 3 symbols long.']
   },
   exercises: [ExerciseSchema]
 });
