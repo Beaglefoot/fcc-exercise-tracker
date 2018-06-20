@@ -1,9 +1,7 @@
 import { Router } from 'express';
-import {
-  createUser,
-  addExercise,
-  getExercises
-} from '../controllers/usersController';
+import createUser from '../controllers/users/createUser';
+import addExercise from '../controllers/users/addExercise';
+import getExercises from '../controllers/users/getExercises';
 
 const router = Router();
 
