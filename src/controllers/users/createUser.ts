@@ -6,8 +6,9 @@ const createUser: Handler = async (req, res, next) => {
   const user = await User.findOne({ name });
 
   if (user) {
-    res.status(409).send({ error: `User with name "${name}" already exists.` });
-    return;
+    throw Object.assign(new Error(`User with name ${name} already exists.`), {
+      httpStatusCode: 409
+    });
   }
 
   try {
@@ -15,8 +16,8 @@ const createUser: Handler = async (req, res, next) => {
     console.log(`Created ${name} with userId ${_id}`);
     res.send({ username: name, userId: _id });
   } catch (err) {
-    res.status(400).send({ error: err.message });
-    next(err);
+    err.httpStatusCode = 400;
+    throw err;
   }
 };
 

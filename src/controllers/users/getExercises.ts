@@ -8,11 +8,10 @@ const getExercises: Handler = async (req, res, next) => {
   try {
     user = await User.findById(userId);
   } catch (err) {
-    res
-      .status(400)
-      .send({ error: `Cannot get exercises for provided userId ${userId}.` });
-    next(err);
-    return;
+    throw Object.assign(
+      new Error(`Cannot get exercises for provided userId ${userId}.`),
+      { httpStatusCode: 400 }
+    );
   }
 
   const { name, exercises, totalCount } = user;

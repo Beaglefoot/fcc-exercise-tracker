@@ -15,9 +15,8 @@ const addExercise: Handler = async (req, res, next) => {
       { runValidators: true }
     ).exec();
   } catch (err) {
-    res.status(400).send({ error: err.message });
-    next(err);
-    return;
+    err.httpStatusCode = 400;
+    throw err;
   }
 
   const { name: username, exercises } = user;
