@@ -7,13 +7,16 @@ const addExercise: Handler = async (req, res, next) => {
   let user: IUser;
 
   try {
-    user = await User.findByIdAndUpdate(
+    await User.findByIdAndUpdate(
       userId,
       {
         $push: { exercises: exercise }
       },
       { runValidators: true }
-    ).exec();
+    );
+
+    // Apparently there is no way to achieve this in one round-trip
+    user = await User.findById(userId);
   } catch (err) {
     err.httpStatusCode = 400;
     throw err;
