@@ -14,5 +14,13 @@ db.users.aggregate([
         }
       }
     }
+  },
+  {
+    $project: {
+      name: true,
+      exercises: {
+        $slice: []
+      }
+    }
   }
 ]);
