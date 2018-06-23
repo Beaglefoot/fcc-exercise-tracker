@@ -1,4 +1,5 @@
 import { Handler } from 'express';
+import mongoose from 'mongoose';
 import User, { IUser } from '../../models/User';
 import isValidDate from '../../helpers/validateDate';
 
@@ -20,6 +21,8 @@ const getExercises: Handler = async (req, res, next) => {
 
   try {
     user = await User.aggregate([
+      // Have to explicitly create ObjectId in aggregation pipeline
+      { $match: { _id: mongoose.Types.ObjectId(userId) } },
       {
         $project: {
           name: true,
