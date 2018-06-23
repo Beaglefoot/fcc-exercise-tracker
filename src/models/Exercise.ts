@@ -1,5 +1,5 @@
 import { Schema } from 'mongoose';
-import isValid from 'date-fns/is_valid';
+import isValid from '../helpers/validateDate';
 
 export interface IExercise extends Document {
   _id?: string;
@@ -23,10 +23,7 @@ export const ExerciseSchema = new Schema({
     type: String,
     required: [true, 'Exercise date is required.'],
     validate: {
-      validator: (date: string) => {
-        if (!date.match(/^\d{4}-\d{2}-\d{2}$/)) return false;
-        return isValid(new Date(date));
-      },
+      validator: isValid,
       message: 'Date should have a valid format of yyyy-mm-dd.'
     }
   }

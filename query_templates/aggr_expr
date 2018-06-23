@@ -1,0 +1,18 @@
+db.users.aggregate([
+  {
+    $project: {
+      name: true,
+      exercises: {
+        $filter: {
+          input: '$exercises',
+          cond: {
+            $and: [
+              { $gte: ['$$this.date', '2018-07-14'] },
+              { $lte: ['$$this.date', '2018-07-15'] }
+            ]
+          }
+        }
+      }
+    }
+  }
+]);
