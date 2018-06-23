@@ -7,6 +7,17 @@ const getExercises: Handler = async (req, res, next) => {
   const { from, to } = req.query;
   let user: IUser;
 
+  Object.entries({ from, to }).map(([key, date]) => {
+    if (date && !isValidDate(date)) {
+      throw Object.assign(
+        new Error(
+          `"${key}" query parameter should have a valid format of yyyy-mm-dd`
+        ),
+        { httpStatusCode: 400 }
+      );
+    }
+  });
+
   try {
     user = await User.aggregate([
       {
@@ -16,12 +27,10 @@ const getExercises: Handler = async (req, res, next) => {
             $filter: {
               input: '$exercises',
               cond: {
-                $and: [[from, '$gte'], [to, '$lte']].map(
-                  ([date, op]) =>
-                    date && isValidDate(date)
-                      ? { [op]: ['$$this.date', date] }
-                      : {}
-                )
+                $and: [
+                  from ? { $gte: ['$$this.date', from] } : {},
+                  to ? { $lte: ['$$this.date', to] } : {}
+                ]
               }
             }
           }
