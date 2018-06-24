@@ -66,9 +66,9 @@ const getExercises: Handler = async (req, res, next) => {
     );
   }
 
-  const { name, exercises, totalCount } = user;
+  const { name, exercises } = user;
 
-  res.send({ userId, name, exercises, totalCount });
+  res.send({ userId, name, exercises });
 };
 
 export default getExercises;
