@@ -6,7 +6,8 @@ const getFormDataAsObject = (form = document.createElement('form')) =>
 
 [
   { id: 'create-user', method: 'POST', url: '/users' },
-  { id: 'add-exercise', method: 'POST', url: '/users/{userId}/exercises' }
+  { id: 'add-exercise', method: 'POST', url: '/users/{userId}/exercises' },
+  { id: 'get-exercises', method: 'GET', url: '/users/{userId}/exercises' }
 ].forEach(({ id, method, url }) => {
   document.getElementById(id).onsubmit = event => {
     event.preventDefault();
@@ -29,16 +30,23 @@ const getFormDataAsObject = (form = document.createElement('form')) =>
       url
     );
 
-    fetch(url, {
-      method,
-      headers: {
-        'Content-type': 'application/json'
-      },
-      body: JSON.stringify(formData)
-    })
-      .then(res => res.json())
+    fetch(
+      url,
+      method === 'GET'
+        ? {}
+        : {
+            method,
+            headers: {
+              'Content-type': 'application/json'
+            },
+            body: JSON.stringify(formData)
+          }
+    )
       .then(checkStatus)
+      .then(res => res.json())
       .then(console.log)
-      .catch(({ response }) => console.error(response));
+      .catch(error =>
+        error.response.json().then(json => console.error(json || error))
+      );
   };
 });

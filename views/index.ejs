@@ -15,34 +15,43 @@
       <p><i>There are no specific user stories, except functional similarity with <a href="https://fuschia-custard.glitch.me/">provided example</a>.</i></p>
 
       <h3>Create a new user</h3>
-      <form id="create-user" method="post">
+      <form id="create-user">
         <div>
-          <label for="username">Name:</label>
-          <input type="text" id="username" name="name">
+          <label>Name:</label>
+          <input type="text" class="username" name="name">
         </div>
         <button>Submit</button>
       </form>
 
       <h3>Add an exercise</h3>
-      <form id="add-exercise" method="post">
+      <form id="add-exercise">
         <div>
-          <label for="user-id">UserID:</label>
-          <input type="text" id="user-id" name="userId">
+          <label>UserId:</label>
+          <input type="text" class="user-id" name="userId">
         </div>
 
         <div>
-          <label for="description">Description:</label>
-          <input type="text" id="description" name="description">
+          <label>Description:</label>
+          <input type="text" class="description" name="description">
         </div>
 
         <div>
-          <label for="duration">Duration:</label>
-          <input type="text" id="duration" placeholder="mins." name="duration">
+          <label>Duration:</label>
+          <input type="text" class="duration" placeholder="mins." name="duration">
         </div>
 
         <div>
-          <label for="date">Date:</label>
-          <input type="text" id="date" placeholder="yyyy-mm-dd" name="date">
+          <label>Date:</label>
+          <input type="text" class="date" placeholder="yyyy-mm-dd" name="date">
+        </div>
+        <button>Submit</button>
+      </form>
+
+      <h3>Get exercises</h3>
+      <form id="get-exercises">
+        <div>
+          <label>UserId:</label>
+          <input type="text" class="user-id" name="userId">
         </div>
         <button>Submit</button>
       </form>
