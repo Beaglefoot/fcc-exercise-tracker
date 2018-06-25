@@ -13,17 +13,39 @@
 
       <p><i>There are no specific user stories, except functional similarity with <a href="https://fuschia-custard.glitch.me/">provided example</a>.</i></p>
 
-      <h3>Examples of usage:</h3>
+      <h3>Create a new user</h3>
+      <form class="create-user" method="post">
+        <div>
+          <label for="username">Name:</label>
+          <input type="text" id="username" name="name">
+        </div>
+        <button>Submit</button>
+      </form>
 
-      <div class="example">
-        <div class="input"><b>Input</b></div>
-        <div class="output"><b>Output</b></div>
-      </div>
-      <div class="example">
-        <div class="input">http://localhost:3000/</div>
-        <div class="output">{}</div>
-      </div>
-      
+      <h3>Add an exercise</h3>
+      <form class="add-exercise" method="post">
+        <div>
+          <label for="user-id">UserID:</label>
+          <input type="text" id="user-id" name="id">
+        </div>
+
+        <div>
+          <label for="description">Description:</label>
+          <input type="text" id="description" name="description">
+        </div>
+
+        <div>
+          <label for="duration">Duration:</label>
+          <input type="text" id="duration" placeholder="mins." name="duration">
+        </div>
+
+        <div>
+          <label for="date">Date:</label>
+          <input type="text" id="date" placeholder="yyyy-mm-dd" name="date">
+        </div>
+        <button>Submit</button>
+      </form>
+
     </div>
   </body>
 </html>
