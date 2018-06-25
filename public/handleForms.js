@@ -25,13 +25,13 @@ const getFormDataAsObject = (form = document.createElement('form')) =>
       }
     };
 
-    url = Object.entries(formData).reduce(
+    const processedUrl = Object.entries(formData).reduce(
       (route, [key, value]) => route.replace(`{${key}}`, value),
       url
     );
 
     fetch(
-      url,
+      processedUrl,
       method === 'GET'
         ? {}
         : {
