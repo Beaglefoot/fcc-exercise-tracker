@@ -5,6 +5,7 @@
     <title>Exercise Tracker</title>
     <link rel="stylesheet" href="./style.css">
     <link href="https://fonts.googleapis.com/css?family=Noto+Sans:400,700" rel="stylesheet">
+    <script defer src="./handleForms.js"></script>
   </head>
   <body>
     <div class="container">
@@ -14,7 +15,7 @@
       <p><i>There are no specific user stories, except functional similarity with <a href="https://fuschia-custard.glitch.me/">provided example</a>.</i></p>
 
       <h3>Create a new user</h3>
-      <form class="create-user" method="post">
+      <form id="create-user" method="post">
         <div>
           <label for="username">Name:</label>
           <input type="text" id="username" name="name">
@@ -23,10 +24,10 @@
       </form>
 
       <h3>Add an exercise</h3>
-      <form class="add-exercise" method="post">
+      <form id="add-exercise" method="post">
         <div>
           <label for="user-id">UserID:</label>
-          <input type="text" id="user-id" name="id">
+          <input type="text" id="user-id" name="userId">
         </div>
 
         <div>
