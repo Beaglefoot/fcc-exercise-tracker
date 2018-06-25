@@ -12,8 +12,9 @@ const getFormDataAsObject = (form = document.createElement('form')) =>
   document.getElementById(id).onsubmit = event => {
     event.preventDefault();
     const formData = getFormDataAsObject(event.target);
-
-    console.log(formData);
+    const responseElement = event.target.parentNode.getElementsByClassName(
+      'response'
+    )[0];
 
     const checkStatus = response => {
       if (response.status >= 200 && response.status < 300) {
@@ -44,9 +45,14 @@ const getFormDataAsObject = (form = document.createElement('form')) =>
     )
       .then(checkStatus)
       .then(res => res.json())
-      .then(console.log)
+      .then(json => (responseElement.textContent = JSON.stringify(json)))
       .catch(error =>
-        error.response.json().then(json => console.error(json || error))
+        error.response
+          .json()
+          .then(
+            json =>
+              (responseElement.textContent = JSON.stringify(json) || error)
+          )
       );
   };
 });

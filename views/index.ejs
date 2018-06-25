@@ -15,46 +15,56 @@
       <p><i>There are no specific user stories, except functional similarity with <a href="https://fuschia-custard.glitch.me/">provided example</a>.</i></p>
 
       <h3>Create a new user</h3>
-      <form id="create-user">
-        <div>
-          <label>Name:</label>
-          <input type="text" class="username" name="name">
-        </div>
-        <button>Submit</button>
-      </form>
+      <div class="section">
+        <form id="create-user">
+          <div>
+            <label>Name:</label>
+            <input type="text" class="username" name="name">
+          </div>
+          <button>Submit</button>
+        </form>
+
+        <div class="response"></div>
+      </div>
 
       <h3>Add an exercise</h3>
-      <form id="add-exercise">
-        <div>
-          <label>UserId:</label>
-          <input type="text" class="user-id" name="userId">
-        </div>
+      <div class="section">
+        <form id="add-exercise">
+          <div>
+            <label>UserId:</label>
+            <input type="text" class="user-id" name="userId">
+          </div>
 
-        <div>
-          <label>Description:</label>
-          <input type="text" class="description" name="description">
-        </div>
+          <div>
+            <label>Description:</label>
+            <input type="text" class="description" name="description">
+          </div>
 
-        <div>
-          <label>Duration:</label>
-          <input type="text" class="duration" placeholder="mins." name="duration">
-        </div>
+          <div>
+            <label>Duration:</label>
+            <input type="text" class="duration" placeholder="mins." name="duration">
+          </div>
 
-        <div>
-          <label>Date:</label>
-          <input type="text" class="date" placeholder="yyyy-mm-dd" name="date">
-        </div>
-        <button>Submit</button>
-      </form>
+          <div>
+            <label>Date:</label>
+            <input type="text" class="date" placeholder="yyyy-mm-dd" name="date">
+          </div>
+          <button>Submit</button>
+        </form>
+        <div class="response"></div>
+      </div>
 
       <h3>Get exercises</h3>
-      <form id="get-exercises">
-        <div>
-          <label>UserId:</label>
-          <input type="text" class="user-id" name="userId">
-        </div>
-        <button>Submit</button>
-      </form>
+      <div class="section">
+        <form id="get-exercises">
+          <div>
+            <label>UserId:</label>
+            <input type="text" class="user-id" name="userId">
+          </div>
+          <button>Submit</button>
+        </form>
+        <div class="response"></div>
+      </div>
 
     </div>
   </body>
