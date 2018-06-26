@@ -4,7 +4,10 @@ import mongoose from 'mongoose';
 import logger from './middleware/logger';
 import usersRouter from './routes/usersRoutes';
 
-const { MONGO_URI } = JSON.parse(fs.readFileSync('./.env', 'utf8'));
+const { MONGO_URI } =
+  process.env.NODE_ENV === 'production'
+    ? process.env
+    : JSON.parse(fs.readFileSync('./.env', 'utf8'));
 
 mongoose.Promise = global.Promise;
 mongoose
