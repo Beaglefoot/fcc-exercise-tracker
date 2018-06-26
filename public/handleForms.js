@@ -31,6 +31,9 @@ const getFormDataAsObject = (form = document.createElement('form')) =>
       url
     );
 
+    const jsonBeautify = object =>
+      js_beautify(JSON.stringify(object), { indent_size: 2 });
+
     fetch(
       processedUrl,
       method === 'GET'
@@ -45,13 +48,13 @@ const getFormDataAsObject = (form = document.createElement('form')) =>
     )
       .then(checkStatus)
       .then(res => res.json())
-      .then(json => (responseElement.textContent = JSON.stringify(json)))
+      .then(json => (responseElement.textContent = jsonBeautify(json)))
       .catch(error =>
         error.response
           .json()
           .then(
             json =>
-              (responseElement.textContent = JSON.stringify(json) || error)
+              (responseElement.textContent = json ? jsonBeautify(json) : error)
           )
       );
   };

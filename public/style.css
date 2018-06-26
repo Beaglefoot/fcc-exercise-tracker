@@ -48,4 +48,5 @@ a {
 .response {
   font-size: 0.8em;
   font-family: monospace;
+  margin: 0;
 }
