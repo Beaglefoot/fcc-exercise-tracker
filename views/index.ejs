@@ -10,62 +10,55 @@
   </head>
   <body>
     <div class="container">
-      <h1>Exercise Tracker</h1>
-      <div>This is the fourth project in Apis and Microservices section from updated <a href="https://learn.freecodecamp.org/apis-and-microservices/apis-and-microservices-projects/exercise-tracker">freeCodeCamp</a> curriculum.</div>
+      <h1 class="title">Exercise Tracker</h1>
+      <div class="description">This is the fourth project in Apis and Microservices section from updated <a href="https://learn.freecodecamp.org/apis-and-microservices/apis-and-microservices-projects/exercise-tracker">freeCodeCamp</a> curriculum.</div>
 
-      <p><i>There are no specific user stories, except functional similarity with <a href="https://fuschia-custard.glitch.me/">provided example</a>.</i></p>
+      <p class="user-story"><i>There are no specific user stories, except functional similarity with <a href="https://fuschia-custard.glitch.me/">provided example</a>.</i></p>
 
-      <h3>Create a new user</h3>
-      <div class="section">
-        <form id="create-user">
-          <div>
-            <label>Name:</label>
-            <input type="text" class="username" name="name">
-          </div>
-          <button>Submit</button>
-        </form>
+      <form id="create-user">
+        <h3>Create a new user</h3>
+        <div>
+          <label>Name:</label>
+          <input type="text" class="username" name="name">
+        </div>
+        <button>Submit</button>
+      </form>
+      <xmp class="response"></xmp>
 
-        <xmp class="response"></xmp>
-      </div>
+      <form id="add-exercise">
+        <h3>Add an exercise</h3>
+        <div>
+          <label>UserId:</label>
+          <input type="text" class="user-id" name="userId">
+        </div>
 
-      <h3>Add an exercise</h3>
-      <div class="section">
-        <form id="add-exercise">
-          <div>
-            <label>UserId:</label>
-            <input type="text" class="user-id" name="userId">
-          </div>
+        <div>
+          <label>Description:</label>
+          <input type="text" class="description" name="description">
+        </div>
 
-          <div>
-            <label>Description:</label>
-            <input type="text" class="description" name="description">
-          </div>
+        <div>
+          <label>Duration:</label>
+          <input type="text" class="duration" placeholder="mins." name="duration">
+        </div>
 
-          <div>
-            <label>Duration:</label>
-            <input type="text" class="duration" placeholder="mins." name="duration">
-          </div>
+        <div>
+          <label>Date:</label>
+          <input type="text" class="date" placeholder="yyyy-mm-dd" name="date">
+        </div>
+        <button>Submit</button>
+      </form>
+      <xmp class="response"></xmp>
 
-          <div>
-            <label>Date:</label>
-            <input type="text" class="date" placeholder="yyyy-mm-dd" name="date">
-          </div>
-          <button>Submit</button>
-        </form>
-        <xmp class="response"></xmp>
-      </div>
-
-      <h3>Get exercises</h3>
-      <div class="section">
-        <form id="get-exercises">
-          <div>
-            <label>UserId:</label>
-            <input type="text" class="user-id" name="userId">
-          </div>
-          <button>Submit</button>
-        </form>
-        <xmp class="response"></xmp>
-      </div>
+      <form id="get-exercises">
+        <h3>Get exercises</h3>
+        <div>
+          <label>UserId:</label>
+          <input type="text" class="user-id" name="userId">
+        </div>
+        <button>Submit</button>
+      </form>
+      <xmp class="response"></xmp>
 
     </div>
   </body>

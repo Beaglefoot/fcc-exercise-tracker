@@ -12,9 +12,7 @@ const getFormDataAsObject = (form = document.createElement('form')) =>
   document.getElementById(id).onsubmit = event => {
     event.preventDefault();
     const formData = getFormDataAsObject(event.target);
-    const responseElement = event.target.parentNode.getElementsByClassName(
-      'response'
-    )[0];
+    const responseElement = event.target.nextElementSibling;
 
     const checkStatus = response => {
       if (response.status >= 200 && response.status < 300) {

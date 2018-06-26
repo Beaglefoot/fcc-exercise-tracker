@@ -8,41 +8,55 @@ body {
   margin: 0 auto;
   color: #333;
   line-height: 1.5;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-areas:
+    'title title'
+    'description description'
+    'user-story user-story'
+    'create-user create-user-response'
+    'add-exercise add-exercise-response'
+    'get-exercises get-exercises-response';
+}
+
+.title {
+  grid-area: title;
+}
+
+.description {
+  grid-area: description;
+}
+
+.user-story {
+  grid-area: user-story;
+}
+
+#create-user {
+  grid-area: create-user;
+}
+
+#create-user ~ .response {
+  grid-area: create-user-response;
+}
+
+#add-exercise {
+  grid-area: add-exercise;
+}
+
+#add-user ~ .response {
+  grid-area: add-user-response;
+}
+
+#get-exercises {
+  grid-area: get-exercises;
+}
+
+#get-exercises ~ .response {
+  grid-area: get-exercises-response;
 }
 
 a {
   color: #4dbce9;
-}
-
-.example {
-  display: flex;
-  justify-content: space-between;
-  flex-direction: column;
-  margin: 0.2em 0;
-}
-
-.input,
-.output {
-  width: 100%;
-  padding: 0 1em;
-  line-height: 1.5;
-}
-
-.example:nth-of-type(2) {
-  margin-bottom: 0.3em;
-}
-
-.input > b {
-  border-bottom: 2px solid #4dbce9;
-}
-
-.output > b {
-  border-bottom: 2px solid #c2de1f;
-}
-
-.section {
-  display: grid;
-  grid-template-columns: 1fr 2fr;
 }
 
 .response {
