@@ -17,9 +17,10 @@
 
       <form id="create-user">
         <h3>Create a new user</h3>
+        <div class="request-description">POST /users</div>
         <div>
           <label>Name</label>
-          <input type="text" class="username" name="name">
+          <input type="text" name="name">
         </div>
         <button>Submit</button>
       </form>
@@ -27,24 +28,25 @@
 
       <form id="add-exercise">
         <h3>Add an exercise</h3>
+        <div class="request-description">POST /users/&lsaquo;userId&rsaquo;/exercises</div>
         <div>
           <label>UserId</label>
-          <input type="text" class="user-id" name="userId">
+          <input type="text" name="userId">
         </div>
 
         <div>
           <label>Description</label>
-          <input type="text" class="description" name="description">
+          <input type="text" name="description">
         </div>
 
         <div>
           <label>Duration <span class="deemphasize">(mins.)</span></label>
-          <input type="text" class="duration" name="duration">
+          <input type="text" name="duration">
         </div>
 
         <div>
           <label>Date <span class="deemphasize">(yyyy-mm-dd)</span></label>
-          <input type="text" class="date" name="date">
+          <input type="text" name="date">
         </div>
         <button>Submit</button>
       </form>
@@ -52,9 +54,10 @@
 
       <form id="get-exercises">
         <h3>Get exercises</h3>
+        <div class="request-description">GET /users/&lsaquo;userId&rsaquo;/exercises[?limit=&lsaquo;number&rsaquo;[&from=&lsaquo;yyyy-mm-dd&rsaquo;][&to=&lsaquo;yyyy-mm-dd&rsaquo;]]</div>
         <div>
           <label>UserId</label>
-          <input type="text" class="user-id" name="userId">
+          <input type="text" name="userId">
         </div>
         <button>Submit</button>
       </form>
